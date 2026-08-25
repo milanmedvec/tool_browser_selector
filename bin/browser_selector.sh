@@ -1,56 +1,66 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# TODO(milan.medvec) replace title with class
-source ~/.profile
+resize_dialog_window() {
+    command -v i3-msg >/dev/null 2>&1 || return 0
+    sleep 0.2
+    i3-msg '[title="browser-selector"] resize set 600 400, move position center' >/dev/null || true
+}
 
-# TODO(milan.medvec) replace title with class
+need() {
+    command -v "$1" >/dev/null 2>&1 || {
+        echo "Missing dependency/launcher: $1" >&2
+        exit 1
+    }
+}
 
-sleep 0.2
-i3-msg '[title="browser-selector"] resize set 600 400, move position center'
-sleep 0.2
+need dialog
 
-HEIGHT=15
-WIDTH=40
-CHOICE_HEIGHT=4
-BACKTITLE="Browser Selector"
-TITLE="Browser Selector"
-MENU="Which browser do you want to run?"
+resize_dialog_window &
 
-OPTIONS=(1 "Chrome: mIImp"
-         2 "Chrome: ID-sign"
-         3 "Chrome: Webout"
-         4 "Chrome: Anonymous"
-         5 "Show URL")
+height=15
+width=40
+choice_height=4
+backtitle="Browser Selector"
+title="Browser Selector"
+menu="Which browser do you want to run?"
 
-CHOICE=$(dialog --clear \
-                --backtitle "$BACKTITLE" \
-                --title "$TITLE" \
-                --menu "$MENU" \
-                $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                "${OPTIONS[@]}" \
-                2>&1 >/dev/tty)
+options=(
+    1 "Chrome: mIImp"
+    2 "Chrome: ID-sign"
+    3 "Chrome: Webout"
+    4 "Chrome: Anonymous"
+    5 "Show URL"
+)
+
+choice="$(dialog --clear \
+    --backtitle "$backtitle" \
+    --title "$title" \
+    --menu "$menu" \
+    "$height" "$width" "$choice_height" \
+    "${options[@]}" \
+    2>&1 >/dev/tty)" || exit 0
 
 clear
-case $CHOICE in
-        1)
-            cmi $@
-            exit 0
-            ;;
-        2)
-            cid $@
-            exit 0
-            ;;
-        3)
-            cwe $@
-            exit 0
-            ;;
-        4)
-            can $@
-            exit 0
-            ;;
-        5)
-            echo $@
-            read
-            exit 0
-            ;;
+case "$choice" in
+    1)
+        need cmi
+        exec cmi "$@"
+        ;;
+    2)
+        need cid
+        exec cid "$@"
+        ;;
+    3)
+        need cwe
+        exec cwe "$@"
+        ;;
+    4)
+        need can
+        exec can "$@"
+        ;;
+    5)
+        printf '%s\n' "$*"
+        read -r -p "Press enter to close..." _
+        ;;
 esac

@@ -1,10 +1,8 @@
 [Desktop Entry]
 Name=Browser selector
-Comment=Browser selector
-Exec=/usr/bin/alacritty --title browser-selector -e /home/milan/_workdir/workspace/bin/browser_selector.sh %u
-#/usr/bin/gnome-terminal --title browser-selector -- /home/milan/_workdir/workspace/bin/browser_selector.sh %u
-Terminal=true
+Comment=Choose which browser/profile should open a URL
+Exec=/usr/bin/alacritty --title browser-selector -e /usr/bin/env browser_selector.sh %u
+Terminal=false
 Type=Application
-Categories=Internet;
 Categories=Network;WebBrowser;
 MimeType=x-scheme-handler/http;x-scheme-handler/https;text/html;

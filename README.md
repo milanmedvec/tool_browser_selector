@@ -1,12 +1,18 @@
 # tool_browser_selector
 
-Standalone extraction from `workspace_archlinux_i3wm`.
+Desktop URL chooser that opens links in selected Chromium session launchers.
 
-## Files
+## Commands
 
-- `bin/browser_selector.sh` from workspace `bin/browser_selector.sh`
-- `share/applications/browser.desktop` from workspace `conf/.browser-selector/browser.desktop`
-- `share/browser-selector/browser_init.sh` from workspace `conf/.browser-selector/browser_init.sh`
+- `browser_selector.sh` - dialog-based browser/profile selector
+
+## Dependencies
+
+- bash
+- dialog
+- alacritty
+- i3-msg
+- tool_chrome_sessions commands: cmi, cid, cwe, can
 
 ## Install
 
@@ -14,5 +20,23 @@ Standalone extraction from `workspace_archlinux_i3wm`.
 ./install.sh
 ```
 
-By default commands from `bin/` are installed to `$HOME/.local/bin`.
-Override with `PREFIX=/path ./install.sh`.
+Install to a custom prefix:
+
+```bash
+PREFIX="$HOME/.local" ./install.sh
+```
+
+## Usage
+
+```bash
+browser_selector.sh https://example.com
+./install.sh
+```
+
+## Configuration
+
+- Installs `browser.desktop` into `$XDG_DATA_HOME/applications` for http/https handling.
+
+## Notes
+
+These scripts were extracted from a personal Arch Linux + i3 workspace. Review dependencies and paths before using them on another machine.
