@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Browser selector
 Comment=Choose which browser/profile should open a URL
-Exec=/usr/bin/alacritty --title browser-selector -e /usr/bin/env browser_selector.sh %u
+Exec=/usr/bin/alacritty --title browser-selector -e /usr/bin/env browser-selector %u
 Terminal=false
 Type=Application
 Categories=Network;WebBrowser;

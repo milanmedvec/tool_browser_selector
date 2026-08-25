@@ -4,7 +4,7 @@ Desktop URL chooser that opens links in selected Chromium session launchers.
 
 ## Commands
 
-- `browser_selector.sh` - dialog-based browser/profile selector
+- `browser-selector` - dialog-based browser/profile selector
 
 ## Dependencies
 
@@ -29,7 +29,7 @@ PREFIX="$HOME/.local" ./install.sh
 ## Usage
 
 ```bash
-browser_selector.sh https://example.com
+browser-selector https://example.com
 ./install.sh
 ```
 
