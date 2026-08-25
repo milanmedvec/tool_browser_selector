@@ -1,4 +1,4 @@
-# browser-selector
+# tool_browser_selector
 
 Standalone extraction from `workspace_archlinux_i3wm`.
 
