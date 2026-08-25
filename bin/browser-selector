@@ -16,7 +16,7 @@ need() {
 
 need dialog
 
-resize_dialog_window &
+resize_dialog_window
 
 height=15
 width=40
