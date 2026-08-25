@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Browser selector
+Comment=Browser selector
+Exec=/usr/bin/alacritty --title browser-selector -e /home/milan/_workdir/workspace/bin/browser_selector.sh %u
+#/usr/bin/gnome-terminal --title browser-selector -- /home/milan/_workdir/workspace/bin/browser_selector.sh %u
+Terminal=true
+Type=Application
+Categories=Internet;
+Categories=Network;WebBrowser;
+MimeType=x-scheme-handler/http;x-scheme-handler/https;text/html;
