@@ -8,31 +8,23 @@ Desktop URL chooser that opens links in selected Chromium session launchers.
 
 ## Dependencies
 
+Required shell:
+- Bash
+
 Required commands:
-- `bash`
 - `dialog`
-- `alacritty`
-- `i3-msg`
 - `cmi`
 - `cid`
 - `cwe`
 - `can`
 
+Optional commands:
+- `i3-msg` - resizes the dialog window under i3 when available
+
+The executable scripts call `need` for required commands before using them.
+
 Notes:
 - `cmi`, `cid`, `cwe`, and `can` are provided by `tool_chrome_sessions`.
-
-Check required commands in your shell:
-
-```bash
-need() {
-    command -v "$1" >/dev/null || echo "missing: $1"
-}
-
-for cmd in bash dialog alacritty i3-msg cmi cid cwe can; do
-    need "$cmd"
-done
-```
-
 ## Install
 
 ```bash
